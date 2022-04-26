@@ -28,6 +28,12 @@ module.exports = {
     'max-len': [
       'error',
       100
+    ],
+    'comma-spacing': 'error',
+    'arrow-spacing': 'error',
+    'object-curly-spacing': [
+      'error',
+      'always'
     ]
   }
 };
