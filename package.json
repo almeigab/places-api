@@ -1,0 +1,22 @@
+{
+  "name": "teste-localidades",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/almeigab/adsp.git\u001b[D\u001b[D\u001b[test\u001b[3\u001b[3;5~t\u001b[2~e-localidades\u001b[D\u001b[D\u001b[a\u001b[C\u001b[C\u001b[C.git"
+  },
+  "author": "almeigab",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/almeigab/adsp.git\u001b[D\u001b[D\u001b[test\u001b[3\u001b[3;5~t\u001b[2~e-localidades\u001b[D\u001b[D\u001b[a\u001b[C\u001b[C\u001b[C/issues"
+  },
+  "homepage": "https://github.com/almeigab/adsp.git\u001b[D\u001b[D\u001b[test\u001b[3\u001b[3;5~t\u001b[2~e-localidades\u001b[D\u001b[D\u001b[a\u001b[C\u001b[C\u001b[C#readme",
+  "devDependencies": {
+    "eslint": "^8.14.0"
+  }
+}
