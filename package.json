@@ -5,19 +5,19 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
+    "dev": "nodemon app.jss",
+    "test": "jest",
     "lint": "npx eslint --fix --ignore-pattern node_modules/ --ext .js ."
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/almeigab/adsp.git\u001b[D\u001b[D\u001b[test\u001b[3\u001b[3;5~t\u001b[2~e-localidades\u001b[D\u001b[D\u001b[a\u001b[C\u001b[C\u001b[C.git"
+    "url": "git+ssh://git@github.com/almeigab/teste-localidades.git\u001b[D\u001b[D\u001b[test\u001b[3\u001b[3;5~t\u001b[2~e-localidades\u001b[D\u001b[D\u001b[a\u001b[C\u001b[C\u001b[C.git"
   },
   "author": "almeigab",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/almeigab/adsp.git\u001b[D\u001b[D\u001b[test\u001b[3\u001b[3;5~t\u001b[2~e-localidades\u001b[D\u001b[D\u001b[a\u001b[C\u001b[C\u001b[C/issues"
-  },
-  "homepage": "https://github.com/almeigab/adsp.git\u001b[D\u001b[D\u001b[test\u001b[3\u001b[3;5~t\u001b[2~e-localidades\u001b[D\u001b[D\u001b[a\u001b[C\u001b[C\u001b[C#readme",
   "devDependencies": {
-    "eslint": "^8.14.0"
+    "eslint": "^8.14.0",
+    "jest": "^28.0.1",
+    "nodemon": "^2.0.15"
   }
 }
