@@ -1,7 +1,7 @@
 require('dotenv/config');
 const express = require('express');
 const bodyParser = require('body-parser');
-const poiRoutes = require('./routes/poi.routes');
+const placesRoutes = require('./routes/places.routes');
 
 const app = express();
 
@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-app.use('/poi', poiRoutes);
+app.use('/places', placesRoutes);
 
 const PORT = process.env.PORT || 3000;
 

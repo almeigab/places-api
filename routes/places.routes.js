@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const poiController = require('../controllers/poi.controllers');
+const placesController = require('../controllers/places.controllers');
 
 const router = Router();
 
