@@ -2,38 +2,44 @@ module.exports = {
   'env': {
     'commonjs': true,
     'es2021': true,
-    'node': true
+    'node': true,
   },
   'extends': 'eslint:recommended',
   'parserOptions': {
-    'ecmaVersion': 'latest'
+    'ecmaVersion': 'latest',
   },
   'rules': {
     'indent': [
       'error',
-      2
+      2,
     ],
     'linebreak-style': [
       'error',
-      'unix'
+      'unix',
     ],
     'quotes': [
       'error',
-      'single'
+      'single',
     ],
     'semi': [
       'error',
-      'always'
+      'always',
     ],
     'max-len': [
       'error',
-      100
+      100,
     ],
     'comma-spacing': 'error',
     'arrow-spacing': 'error',
     'object-curly-spacing': [
       'error',
-      'always'
-    ]
-  }
+      'always',
+    ],
+    'eol-last': ['error', 'always'],
+    'no-trailing-spaces': 'error',
+    'comma-dangle': [
+      'error',
+      'always-multiline',
+    ],
+  },
 };
