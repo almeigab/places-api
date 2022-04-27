@@ -1,0 +1,43 @@
+const mongoose = require('../database');
+const Schema = mongoose.Schema;
+
+const schema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  x: {
+    type: Number,
+    required: true,
+    validate : {
+      validator: (v) => Number.isInteger(v) && v >= 0,
+      message: '{VALUE} is not a positive integer value',
+    },
+  },
+  y: {
+    type: Number,
+    required: true,
+    validate : {
+      validator: (v) => Number.isInteger(v) && v >= 0,
+      message: '{VALUE} is not a positive integer value',
+    },
+  },
+  opened: {
+    type: String,
+    required: false,
+    validate: {
+      validator: (v) => /([01]?[0-9]|2[0-3]):[0-5][0-9]/.test(v),
+      message: '{VALUE} should be in format hh:mm',
+    },
+  },
+  closed: {
+    type: String,
+    required: false,
+    validate: {
+      validator: (v) => /([01]?[0-9]|2[0-3]):[0-5][0-9]/.test(v),
+      message: '{VALUE} should be in format hh:mm',
+    },
+  },
+});
+
+module.exports = mongoose.model('Places', schema);
