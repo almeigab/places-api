@@ -1,4 +1,5 @@
 const mongoose = require('../database');
+const regex = require('../utils/regex');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
@@ -26,7 +27,7 @@ const schema = new Schema({
     type: String,
     required: false,
     validate: {
-      validator: (v) => /([01]?[0-9]|2[0-3]):[0-5][0-9]/.test(v),
+      validator: (v) => regex.HOUR.test(v),
       message: '{VALUE} should be in format hh:mm',
     },
   },
@@ -34,7 +35,7 @@ const schema = new Schema({
     type: String,
     required: false,
     validate: {
-      validator: (v) => /([01]?[0-9]|2[0-3]):[0-5][0-9]/.test(v),
+      validator: (v) => regex.HOUR.test(v),
       message: '{VALUE} should be in format hh:mm',
     },
   },
