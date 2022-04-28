@@ -2,6 +2,8 @@ require('dotenv/config');
 const express = require('express');
 const bodyParser = require('body-parser');
 const placesRoutes = require('./routes/places.routes');
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger_output.json');
 
 const app = express();
 
@@ -11,10 +13,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+const PORT = process.env.PORT || 3000;
+
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use('/places', placesRoutes);
-
-const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, (error) => {
   if(!error)

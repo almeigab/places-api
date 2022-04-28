@@ -4,10 +4,32 @@ const { validateQuery } = require('../middleware/validate-query.middleware');
 
 const router = Router();
 
-router.get('/', placesController.listPlaces);
+router.get(
+  '/',
+  /**
+   * #swagger.tags = ['Places']
+   * #swagger.description = 'Endpoint to list all places.'
+   */
+  placesController.listPlaces,
+);
 
-router.post('/', placesController.createPlace);
+router.post(
+  '/',
+  /**
+   * #swagger.tags = ['Places']
+   * #swagger.description = 'Endpoint to create a place.'
+   */
+  placesController.createPlace,
+);
 
-router.get('/availabilty', validateQuery, placesController.filterPlaces);
+router.get(
+  '/availabilty',
+  /**
+   * #swagger.tags = ['Places']
+   * #swagger.description = 'Endpoint to list available places for a given distance and time.'
+   */
+  validateQuery,
+  placesController.filterPlaces,
+);
 
 module.exports = router;
