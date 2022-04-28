@@ -5,7 +5,7 @@ exports.listPlaces = async () => {
   return result;
 };
 
-exports.createPlace = async data => {
+exports.createPlace = async (data) => {
   const place = new Places(data);
   await place.save();
 };

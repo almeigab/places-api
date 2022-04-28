@@ -35,7 +35,9 @@ exports.filterPlaces = async (req, res) => {
   try {
     const data = await repository.listPlaces();
 
-    const { x, y, mts, hr } = req.query;
+    const {
+      x, y, mts, hr,
+    } = req.query;
 
     const filteredData = await placesService.filterPlaces(data, x, y, mts, hr);
     res.status(200).send(filteredData);

@@ -13,12 +13,13 @@ const doc = {
   produces: ['application/json'],
   tags: [
     {
-      'name': 'Places',
-      'description': 'Endpoints',
+      name: 'Places',
+      description: 'Endpoints',
     },
   ],
 };
 
 swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
-  require('./app.js');           // Your project's root file
+  // eslint-disable-next-line global-require
+  require('./app'); // Your project's root file
 });

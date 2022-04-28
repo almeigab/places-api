@@ -1,8 +1,8 @@
 require('dotenv/config');
 const express = require('express');
 const bodyParser = require('body-parser');
-const placesRoutes = require('./routes/places.routes');
 const swaggerUi = require('swagger-ui-express');
+const placesRoutes = require('./routes/places.routes');
 const swaggerFile = require('./swagger_output.json');
 
 const app = express();
@@ -20,9 +20,11 @@ app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use('/places', placesRoutes);
 
 app.listen(PORT, (error) => {
-  if(!error)
-    console.log('Server is listening on port '+ PORT);
-  else
+  if (!error) {
+    // eslint-disable-next-line no-console
+    console.log(`Server is listening on port ${PORT}`);
+  } else {
+    // eslint-disable-next-line no-console
     console.log('Error occured, server can\'t start', error);
-},
-);
+  }
+});

@@ -1,6 +1,7 @@
 const mongoose = require('../database');
 const regex = require('../utils/regex');
-const Schema = mongoose.Schema;
+
+const { Schema } = mongoose;
 
 const schema = new Schema({
   name: {
@@ -10,7 +11,7 @@ const schema = new Schema({
   x: {
     type: Number,
     required: true,
-    validate : {
+    validate: {
       validator: (v) => Number.isInteger(v) && v >= 0,
       message: '{VALUE} is not a positive integer value',
     },
@@ -18,7 +19,7 @@ const schema = new Schema({
   y: {
     type: Number,
     required: true,
-    validate : {
+    validate: {
       validator: (v) => Number.isInteger(v) && v >= 0,
       message: '{VALUE} is not a positive integer value',
     },
