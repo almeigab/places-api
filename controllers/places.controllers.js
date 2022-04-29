@@ -31,7 +31,7 @@ exports.createPlace = async (req, res) => {
   }
 };
 
-exports.filterPlaces = async (req, res) => {
+exports.listAvailablePlaces = async (req, res) => {
   try {
     const data = await repository.listPlaces();
 

@@ -79,14 +79,14 @@ describe('PlacesController', () => {
     });
   });
 
-  describe('filterPlaces', () => {
-    it('should contain filterPlaces function', () => {
-      expect(typeof placesController.filterPlaces).toBe('function');
+  describe('listAvailablePlaces', () => {
+    it('should contain listAvailablePlaces function', () => {
+      expect(typeof placesController.listAvailablePlaces).toBe('function');
     });
     it('should send error 500 when repository.listPlaces fails', async () => {
       repository.listPlaces = jest.fn().mockRejectedValue(new Error('Unknown error'));
 
-      await placesController.filterPlaces(req, res);
+      await placesController.listAvailablePlaces(req, res);
 
       expect(res.statusCode).toBe(500);
       expect(res._isEndCalled()).toBeTruthy();
@@ -98,7 +98,7 @@ describe('PlacesController', () => {
 
       placesService.filterPlaces = jest.fn().mockRejectedValue(new Error('Unknown error'));
 
-      await placesController.filterPlaces(req, res);
+      await placesController.listAvailablePlaces(req, res);
 
       expect(res.statusCode).toBe(500);
       expect(res._isEndCalled()).toBeTruthy();
@@ -118,7 +118,7 @@ describe('PlacesController', () => {
       const availablePlaces = generateAvailablePlaces();
       placesService.filterPlaces = jest.fn().mockResolvedValue(availablePlaces);
 
-      await placesController.filterPlaces(req, res);
+      await placesController.listAvailablePlaces(req, res);
 
       expect(placesService.filterPlaces).toBeCalledWith(
         expect.arrayContaining(placesList),

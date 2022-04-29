@@ -29,7 +29,7 @@ router.get(
    * #swagger.description = 'Endpoint to list available places for a given distance and time.'
    */
   validateQuery,
-  placesController.filterPlaces,
+  placesController.listAvailablePlaces,
 );
 
 module.exports = router;
