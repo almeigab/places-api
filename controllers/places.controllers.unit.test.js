@@ -64,10 +64,14 @@ describe('PlacesController', () => {
     });
     it('should send success 201 when repository.createPlace succeeds', async () => {
       const newPlace = generateNewPlace();
-      repository.createPlace = jest.fn().mockResolvedValue(newPlace);
+
+      req.body = newPlace;
+
+      repository.createPlace = jest.fn().mockResolvedValue();
 
       await placesController.createPlace(req, res);
 
+      expect(repository.createPlace).toBeCalledWith(expect.objectContaining(newPlace));
       expect(res.statusCode).toBe(201);
       expect(res._isEndCalled()).toBeTruthy();
       expect(res._getData()).toStrictEqual({ message: 'Successfully registered place!' });
