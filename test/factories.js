@@ -18,6 +18,13 @@ exports.generatePlacesList = () => [
     x: 15,
     y: 12,
   },
+  {
+    name: 'Cinema',
+    x: 20,
+    y: 14,
+    opened: '13:00',
+    closed: '22:00',
+  },
 ];
 
 exports.generateNewPlace = () => ({
@@ -28,6 +35,13 @@ exports.generateNewPlace = () => ({
   closed: '22:00',
 });
 
+exports.generateAvailabilityParams = () => ({
+  x: 20,
+  y: 10,
+  mts: 10,
+  hr: '19:00',
+});
+
 exports.generateAvailablePlaces = () => [
   {
     name: 'Restaurante',
@@ -35,6 +49,10 @@ exports.generateAvailablePlaces = () => [
   },
   {
     name: 'Praça',
+    status: 'aberto',
+  },
+  {
+    name: 'Cinema',
     status: 'aberto',
   },
 ];

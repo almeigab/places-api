@@ -4,7 +4,12 @@ const ValidationError = require('mongoose/lib/error/validation');
 const placesController = require('./places.controllers');
 const repository = require('../repositories/places.repository');
 const placesService = require('../services/places.services');
-const { generatePlacesList, generateNewPlace, generateAvailablePlaces } = require('../test/factories');
+const {
+  generatePlacesList,
+  generateNewPlace,
+  generateAvailabilityParams,
+  generateAvailablePlaces,
+} = require('../test/factories');
 
 let req;
 let res;
@@ -14,7 +19,7 @@ beforeEach(() => {
   res = httpMocks.createResponse();
 });
 
-describe('PlacesController', () => {
+describe('Places Controllers', () => {
   describe('listPlaces', () => {
     it('should contain listPlaces function', () => {
       expect(typeof placesController.listPlaces).toBe('function');
@@ -105,12 +110,8 @@ describe('PlacesController', () => {
       expect(res._getData()).toStrictEqual({ message: 'Failed to retrieve available places.' });
     });
     it('should send success 200 when everything succeeds', async () => {
-      req.query = {
-        x: 20,
-        y: 10,
-        mts: 10,
-        hr: '19:00',
-      };
+      const queryParams = generateAvailabilityParams();
+      req.query = { ...queryParams };
 
       const placesList = generatePlacesList();
       repository.listPlaces = jest.fn().mockResolvedValue(placesList);
