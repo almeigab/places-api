@@ -19,3 +19,11 @@ exports.generatePlacesList = () => [
     y: 12,
   },
 ];
+
+exports.generateNewPlace = () => ({
+  name: 'Loja',
+  x: 10,
+  y: 20,
+  opened: '10:00',
+  closed: '22:00',
+});

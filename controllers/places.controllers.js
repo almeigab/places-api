@@ -1,4 +1,4 @@
-const MongooseError = require('mongoose/lib/error/mongooseError');
+const ValidationError = require('mongoose/lib/error/validation');
 const repository = require('../repositories/places.repository');
 const placesService = require('../services/places.services');
 
@@ -23,7 +23,7 @@ exports.createPlace = async (req, res) => {
 
     res.status(201).send({ message: 'Successfully registered place!' });
   } catch (e) {
-    if (e instanceof MongooseError && e.name === 'ValidationError') {
+    if (e instanceof ValidationError) {
       res.status(400).send({ message: e.message });
     } else {
       res.status(500).send({ message: 'Failed to register place.' });
