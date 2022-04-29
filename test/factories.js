@@ -27,3 +27,14 @@ exports.generateNewPlace = () => ({
   opened: '10:00',
   closed: '22:00',
 });
+
+exports.generateAvailablePlaces = () => [
+  {
+    name: 'Restaurante',
+    status: 'fechado',
+  },
+  {
+    name: 'Praça',
+    status: 'aberto',
+  },
+];

@@ -42,6 +42,6 @@ exports.filterPlaces = async (req, res) => {
     const filteredData = await placesService.filterPlaces(data, x, y, mts, hr);
     res.status(200).send(filteredData);
   } catch (e) {
-    res.status(500).send({ message: 'Failed to retrieve places.' });
+    res.status(500).send({ message: 'Failed to retrieve available places.' });
   }
 };
