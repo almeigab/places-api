@@ -1,6 +1,5 @@
 /* eslint-disable no-underscore-dangle */
 const httpMocks = require('node-mocks-http');
-const ValidationError = require('mongoose/lib/error/validation');
 const placesController = require('./places.controllers');
 const repository = require('../repositories/places.repository');
 const placesService = require('../services/places.services');
@@ -51,13 +50,15 @@ describe('Places Controllers', () => {
       expect(typeof placesController.createPlace).toBe('function');
     });
     it('should send error 400 when repository.createPlace fails - field validation error', async () => {
-      repository.createPlace = jest.fn().mockRejectedValue(new ValidationError(new Error('Places validation failed')));
+      const validationError = new Error('Places validation failed');
+      validationError.name = 'ValidationError';
+      repository.createPlace = jest.fn().mockRejectedValue(validationError);
 
       await placesController.createPlace(req, res);
 
       expect(res.statusCode).toBe(400);
       expect(res._isEndCalled()).toBeTruthy();
-      expect(res._getData()).toStrictEqual({ message: 'Validation failed' });
+      expect(res._getData()).toStrictEqual({ message: 'Places validation failed' });
     });
     it('should send error 500 when repository.createPlace fails - unknown error', async () => {
       repository.createPlace = jest.fn().mockRejectedValue(new Error('Unknown error'));

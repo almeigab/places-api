@@ -1,3 +1,5 @@
+const { convertTimeToMinutes } = require('../utils/date');
+
 function getDistance(place, x, y) {
   const xDiff = place.x - x;
   const yDiff = place.y - y;
@@ -9,12 +11,11 @@ function getDistance(place, x, y) {
 function isOpen(place, hr) {
   if (place.opened === undefined && place.closed === undefined) return true;
 
-  const [openedHr, openedMin] = place.opened.split(':').map((item) => Number.parseInt(item));
-  const [closedHr, closedMin] = place.closed.split(':').map((item) => Number.parseInt(item));
-  const [targetHr, targetMin] = hr.split(':').map((item) => Number.parseInt(item));
+  const openedInMinutes = convertTimeToMinutes(place.opened);
+  const closedInMinutes = convertTimeToMinutes(place.closed);
+  const targetInMinutes = convertTimeToMinutes(hr);
 
-  return ((targetHr > openedHr || (targetHr === openedHr && targetMin >= openedMin))
-    && (targetHr < closedHr || (targetHr === closedHr && targetMin < closedMin)));
+  return (targetInMinutes >= openedInMinutes) && (targetInMinutes <= closedInMinutes);
 }
 
 exports.filterPlaces = (places, x, y, mts, hr) => places
