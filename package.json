@@ -1,5 +1,5 @@
 {
-  "name": "teste-localidades",
+  "name": "places-api",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/almeigab/teste-localidades.git\u001b[D\u001b[D\u001b[test\u001b[3\u001b[3;5~t\u001b[2~e-localidades\u001b[D\u001b[D\u001b[a\u001b[C\u001b[C\u001b[C.git"
+    "url": "git+ssh://git@github.com/almeigab/places-api.git"
   },
   "author": "almeigab",
   "license": "ISC",
