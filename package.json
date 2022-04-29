@@ -7,7 +7,7 @@
     "start": "node app.js",
     "dev": "nodemon app.jss",
     "test": "jest",
-    "lint": "npx eslint --fix --ignore-pattern node_modules/ --ext .js .",
+    "lint": "npx eslint --fix --ext .js .",
     "swagger-autogen": "node swagger.js"
   },
   "repository": {
@@ -17,13 +17,16 @@
   "author": "almeigab",
   "license": "ISC",
   "devDependencies": {
+    "@types/jest": "^27.4.1",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jest": "^26.1.5",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "jest": "^28.0.1",
+    "node-mocks-http": "^1.11.0",
     "nodemon": "^2.0.15"
   },
   "dependencies": {
