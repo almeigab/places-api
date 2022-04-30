@@ -19,7 +19,4 @@ const doc = {
   ],
 };
 
-swaggerAutogen(outputFile, endpointsFiles, doc).then(() => {
-  // eslint-disable-next-line global-require
-  require('./app'); // Your project's root file
-});
+swaggerAutogen(outputFile, endpointsFiles, doc);
