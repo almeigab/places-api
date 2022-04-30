@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const swaggerUi = require('swagger-ui-express');
 const morgan = require('morgan');
 const placesRoutes = require('./routes/places.routes');
-const swaggerFile = require('./swagger_output.json');
+const swaggerFile = require('./swagger/swagger_output.json');
 
 const app = express();
 

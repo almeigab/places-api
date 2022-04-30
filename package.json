@@ -8,7 +8,9 @@
     "dev": "nodemon app.jss",
     "test": "jest --coverage",
     "lint": "npx eslint --fix --ext .js .",
-    "swagger-autogen": "node swagger.js"
+    "swagger-autogen": "node swagger/index.js",
+    "md-docs": "swagger-markdown --skip-info -i swagger/swagger_output.json -o ApiDocumentation.md",
+    "docs": "npm run swagger-autogen && npm run md-docs"
   },
   "repository": {
     "type": "git",
@@ -27,7 +29,8 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "jest": "^28.0.1",
     "node-mocks-http": "^1.11.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "swagger-markdown": "^1.4.6"
   },
   "dependencies": {
     "body-parser": "^1.20.0",

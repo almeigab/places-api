@@ -30,19 +30,34 @@
         ],
         "summary": "List all places.",
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [],
         "responses": {
           "200": {
             "description": "Places successfully obtained.",
             "schema": {
-              "$ref": "#/definitions/ArrayOfPlaces"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Places"
+              },
+              "xml": {
+                "name": "main"
+              }
             }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Failed to retrieve places."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         }
       },
@@ -52,12 +67,6 @@
         ],
         "summary": "Create a place.",
         "description": "",
-        "consumes": [
-          "application/json"
-        ],
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "name": "place",
@@ -65,19 +74,55 @@
             "description": "Add a place",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/AddPlace"
+              "$ref": "#/definitions/Places"
             }
           }
         ],
         "responses": {
           "201": {
-            "description": "Created"
+            "description": "Places successfully registered.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Successfully registered place!"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "400": {
-            "description": "Bad Request"
+            "description": "Bad Request",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Places validation failed."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "500": {
-            "description": "Internal Server Error"
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string",
+                  "example": "Failed to register place."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           }
         }
       }
@@ -89,9 +134,6 @@
         ],
         "summary": "List available places for a given distance and time.",
         "description": "",
-        "produces": [
-          "application/json"
-        ],
         "parameters": [
           {
             "name": "x",
@@ -120,7 +162,16 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Places available successfully obtained.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/AvailablePlaces"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
           },
           "400": {
             "description": "Bad Request"
@@ -133,20 +184,20 @@
     }
   },
   "definitions": {
-    "AddPlace": {
+    "Places": {
       "type": "object",
       "properties": {
         "name": {
           "type": "string",
-          "example": "Cinema"
+          "example": "Restaurante"
         },
         "x": {
           "type": "number",
-          "example": 20
+          "example": 27
         },
         "y": {
           "type": "number",
-          "example": 10
+          "example": 12
         },
         "opened": {
           "type": "string",
@@ -154,7 +205,7 @@
         },
         "closed": {
           "type": "string",
-          "example": "22:00"
+          "example": "18:00"
         }
       },
       "required": [
@@ -163,31 +214,16 @@
         "y"
       ]
     },
-    "ArrayOfPlaces": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "example": "Restaurante"
-          },
-          "x": {
-            "type": "number",
-            "example": 27
-          },
-          "y": {
-            "type": "number",
-            "example": 12
-          },
-          "opened": {
-            "type": "string",
-            "example": "12:00"
-          },
-          "closed": {
-            "type": "string",
-            "example": "18:00"
-          }
+    "AvailablePlaces": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Praça"
+        },
+        "status": {
+          "type": "string",
+          "example": "Aberto"
         }
       }
     }

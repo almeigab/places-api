@@ -16,7 +16,7 @@ To install the project, run
 
     npm install
 
-This project uses MongoDB to store the resources. You can either install a [local instance](https://www.mongodb.com/docs/manual/installation/) to test the project locally or provision a free __MongoDB Atlas__ instance on [Cloud](https://www.mongodb.com/atlas/database?tck=docs_server).
+:gear: This project uses MongoDB to store the resources. You can either install a [local instance](https://www.mongodb.com/docs/manual/installation/) to test the project locally or provision a free __MongoDB Atlas__ instance on [Cloud](https://www.mongodb.com/atlas/database?tck=docs_server).
 
 ## Usage
 
@@ -26,7 +26,7 @@ The, to run the project, run
 
     npm start
 
-Done, now you'll be able to use the API using the Swagger UI at [http://localhost:3000/doc](http://localhost:3000/doc).
+:heavy_check_mark: Done, now you'll be able to use the API using the Swagger UI at [http://localhost:3000/doc](http://localhost:3000/doc).
 
 ## Testing
 
@@ -36,10 +36,12 @@ To run the automated unit tests, run
 
 All services and controllers should be fully tested.
 
-This project also uses Github Actions to test it everytime a commit is pushed.
+:robot: This project also uses Github Actions to test it everytime a commit is pushed.
 
-## Documentation
+## API Documentation
+
+:rocket: Please refer to [API Documentation](./ApiDocumentation.md).
 
 To auto-generate the API documentation (that is used by Swagger), run
 
-    npm run swagger-autogen
+    npm run docs
