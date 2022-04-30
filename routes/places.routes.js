@@ -9,6 +9,7 @@ router.get(
   /**
    * #swagger.tags = ['Places']
    * #swagger.summary = 'List all places.'
+   * #swagger.description = 'You can list all registered places.'
    * #swagger.responses[200] = {
         description: 'Places successfully obtained.',
         schema: [{ $ref: '#/definitions/Places' }]
@@ -26,6 +27,11 @@ router.post(
   /**
    * #swagger.tags = ['Places']
    * #swagger.summary = 'Create a place.'
+   * #swagger.description = 'You can register a place passing its `name`,
+     and coordinates `x` and `y` (both _integer greater than 0_).
+     <br>Parameters `opened` and `closed` are optional (both in format _hh:mm_).
+     <br>If you specify `opened` or `closed`, the other one is required,
+     and `closed` should be greater than `opened`.'
    * #swagger.parameters['place'] = {
         in: 'body',
         description: 'Add a place',
@@ -53,6 +59,10 @@ router.get(
   /**
    * #swagger.tags = ['Places']
    * #swagger.summary = 'List available places for a given distance and time.'
+   * #swagger.description = 'You can search for available places given a pair
+     of coordinates `x` and `y` (both _integer greater than 0_),
+     the range distance `mts` (_integer greater than 0_) and the time `hr` (in format _hh:mm_).
+     <br>All 4 parameters are required.'
    * #swagger.parameters['x'] = {
         required: true
     }

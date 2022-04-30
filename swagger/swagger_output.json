@@ -29,7 +29,7 @@
           "Places"
         ],
         "summary": "List all places.",
-        "description": "",
+        "description": "You can list all registered places.",
         "parameters": [],
         "responses": {
           "200": {
@@ -66,7 +66,7 @@
           "Places"
         ],
         "summary": "Create a place.",
-        "description": "",
+        "description": "You can register a place passing its `name`,  and coordinates `x` and `y` (both _integer greater than 0_).  <br>Parameters `opened` and `closed` are optional (both in format _hh:mm_).  <br>If you specify `opened` or `closed`, the other one is required,  and `closed` should be greater than `opened`.",
         "parameters": [
           {
             "name": "place",
@@ -133,7 +133,7 @@
           "Places"
         ],
         "summary": "List available places for a given distance and time.",
-        "description": "",
+        "description": "You can search for available places given a pair  of coordinates `x` and `y` (both _integer greater than 0_),  the range distance `mts` (_integer greater than 0_) and the time `hr` (in format _hh:mm_).  <br>All 4 parameters are required.",
         "parameters": [
           {
             "name": "x",

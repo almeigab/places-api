@@ -9,7 +9,7 @@
     "test": "jest --coverage",
     "lint": "npx eslint --fix --ext .js .",
     "swagger-autogen": "node swagger/index.js",
-    "md-docs": "swagger-markdown --skip-info -i swagger/swagger_output.json -o ApiDocumentation.md",
+    "md-docs": "swagger-markdown -i swagger/swagger_output.json -o ApiDocumentation.md",
     "docs": "npm run swagger-autogen && npm run md-docs"
   },
   "repository": {

@@ -10,6 +10,12 @@
 
 A Rest API for point of interest (POI) locations.
 
+## Contents
+ - [Installation](#installation)
+ - [Usage](#usage)
+ - [Testing](#testing)
+ - [API Documentation](#api-documentation)
+
 ## Installation
 
 To install the project, run
