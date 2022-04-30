@@ -42,6 +42,28 @@ exports.generateAvailabilityParams = () => ({
   hr: '19:00',
 });
 
+exports.generatePlacesInRange = () => [
+  {
+    name: 'Restaurante',
+    x: 27,
+    y: 12,
+    opened: '12:00',
+    closed: '18:00',
+  },
+  {
+    name: 'Praça',
+    x: 15,
+    y: 12,
+  },
+  {
+    name: 'Cinema',
+    x: 20,
+    y: 14,
+    opened: '13:00',
+    closed: '22:00',
+  },
+];
+
 exports.generateAvailablePlaces = () => [
   {
     name: 'Restaurante',

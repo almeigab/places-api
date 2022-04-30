@@ -32,14 +32,17 @@ exports.createPlace = async (req, res) => {
 
 exports.listAvailablePlaces = async (req, res) => {
   try {
-    const data = await repository.listPlaces();
+    const places = await repository.listPlaces();
 
     const {
       x, y, mts, hr,
     } = req.query;
 
-    const filteredData = await placesService.filterPlaces(data, x, y, mts, hr);
-    res.status(200).send(filteredData);
+    const placesInRange = placesService.filterPlacesInRange(places, x, y, mts);
+
+    const availablePlaces = placesService.formatAvailablePlaces(placesInRange, hr);
+
+    res.status(200).send(availablePlaces);
   } catch (e) {
     res.status(500).send({ message: 'Failed to retrieve available places.' });
   }

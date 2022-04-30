@@ -1,19 +1,40 @@
 const placesService = require('./places.services');
-const { generatePlacesList, generateAvailabilityParams, generateAvailablePlaces } = require('../test/factories');
+const {
+  generatePlacesList, generateAvailabilityParams, generatePlacesInRange, generateAvailablePlaces,
+} = require('../test/factories');
 
 describe('Places Services', () => {
-  describe('filterPlaces', () => {
-    it('should contain filterPlaces function', () => {
-      expect(typeof placesService.filterPlaces).toBe('function');
+  describe('filterPlacesInRange', () => {
+    it('should contain filterPlacesInRange function', () => {
+      expect(typeof placesService.filterPlacesInRange).toBe('function');
     });
-    it('should filter places in mts range and list their availability', () => {
+    it('should filter places in mts range', () => {
       const {
-        x, y, mts, hr,
+        x, y, mts,
       } = generateAvailabilityParams();
 
       const placesList = generatePlacesList();
 
-      const result = placesService.filterPlaces(placesList, x, y, mts, hr);
+      const result = placesService.filterPlacesInRange(placesList, x, y, mts);
+
+      const expectedResult = generatePlacesInRange();
+
+      expect(result).toStrictEqual(expectedResult);
+    });
+  });
+
+  describe('formatAvailablePlaces', () => {
+    it('should contain formatAvailablePlaces function', () => {
+      expect(typeof placesService.formatAvailablePlaces).toBe('function');
+    });
+    it('should list places availability', () => {
+      const {
+        hr,
+      } = generateAvailabilityParams();
+
+      const placesList = generatePlacesInRange();
+
+      const result = placesService.formatAvailablePlaces(placesList, hr);
 
       const expectedResult = generateAvailablePlaces();
 

@@ -7,6 +7,7 @@ const {
   generatePlacesList,
   generateNewPlace,
   generateAvailabilityParams,
+  generatePlacesInRange,
   generateAvailablePlaces,
 } = require('../test/factories');
 
@@ -98,11 +99,28 @@ describe('Places Controllers', () => {
       expect(res._isEndCalled()).toBeTruthy();
       expect(res._getData()).toStrictEqual({ message: 'Failed to retrieve available places.' });
     });
-    it('should send error 500 when placesService.filterPlaces fails', async () => {
+    it('should send error 500 when placesService.filterPlacesInRange fails', async () => {
       const placesList = generatePlacesList();
       repository.listPlaces = jest.fn().mockResolvedValue(placesList);
 
-      placesService.filterPlaces = jest.fn().mockRejectedValue(new Error('Unknown error'));
+      placesService.filterPlacesInRange = jest.fn()
+        .mockImplementation(() => { throw new Error('Unknown error'); });
+
+      await placesController.listAvailablePlaces(req, res);
+
+      expect(res.statusCode).toBe(500);
+      expect(res._isEndCalled()).toBeTruthy();
+      expect(res._getData()).toStrictEqual({ message: 'Failed to retrieve available places.' });
+    });
+    it('should send error 500 when placesService.formatAvailablePlaces fails', async () => {
+      const placesList = generatePlacesList();
+      repository.listPlaces = jest.fn().mockResolvedValue(placesList);
+
+      const placesInRange = generatePlacesInRange();
+      placesService.filterPlacesInRange = jest.fn().mockReturnValue(placesInRange);
+
+      placesService.formatAvailablePlaces = jest.fn()
+        .mockImplementation(() => { throw new Error('Unknown error'); });
 
       await placesController.listAvailablePlaces(req, res);
 
@@ -117,16 +135,23 @@ describe('Places Controllers', () => {
       const placesList = generatePlacesList();
       repository.listPlaces = jest.fn().mockResolvedValue(placesList);
 
+      const placesInRange = generatePlacesInRange();
+      placesService.filterPlacesInRange = jest.fn().mockReturnValue(placesInRange);
+
       const availablePlaces = generateAvailablePlaces();
-      placesService.filterPlaces = jest.fn().mockResolvedValue(availablePlaces);
+      placesService.formatAvailablePlaces = jest.fn().mockReturnValue(availablePlaces);
 
       await placesController.listAvailablePlaces(req, res);
 
-      expect(placesService.filterPlaces).toBeCalledWith(
+      expect(placesService.filterPlacesInRange).toBeCalledWith(
         expect.arrayContaining(placesList),
         req.query.x,
         req.query.y,
         req.query.mts,
+      );
+
+      expect(placesService.formatAvailablePlaces).toBeCalledWith(
+        expect.arrayContaining(placesInRange),
         req.query.hr,
       );
 

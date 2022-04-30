@@ -18,9 +18,10 @@ function isOpen(place, hr) {
   return (targetInMinutes >= openedInMinutes) && (targetInMinutes <= closedInMinutes);
 }
 
-exports.filterPlaces = (places, x, y, mts, hr) => places
-  .filter((place) => getDistance(place, x, y) <= mts)
-  .map((place) => ({
-    name: place.name,
-    status: isOpen(place, hr) ? 'aberto' : 'fechado',
-  }));
+exports.filterPlacesInRange = (places, x, y, mts) => places
+  .filter((place) => getDistance(place, x, y) <= mts);
+
+exports.formatAvailablePlaces = (places, hr) => places.map((place) => ({
+  name: place.name,
+  status: isOpen(place, hr) ? 'aberto' : 'fechado',
+}));
