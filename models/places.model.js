@@ -27,7 +27,7 @@ const schema = new Schema({
   },
   opened: {
     type: String,
-    required: false,
+    required() { return this.closed !== undefined; },
     validate: {
       validator: (v) => regex.HOUR.test(v),
       message: '{VALUE} should be in format hh:mm',
@@ -35,7 +35,7 @@ const schema = new Schema({
   },
   closed: {
     type: String,
-    required: false,
+    required() { return this.opened !== undefined; },
     validate: {
       validator: (v) => regex.HOUR.test(v),
       message: '{VALUE} should be in format hh:mm',
@@ -44,7 +44,10 @@ const schema = new Schema({
 });
 
 schema.pre('validate', function (next) {
-  if (convertTimeToMinutes(this.opened) >= convertTimeToMinutes(this.closed)) {
+  if (this.opened
+    && this.closed
+    && convertTimeToMinutes(this.opened) >= convertTimeToMinutes(this.closed)
+  ) {
     const error = new Error('Closing hour must be greater than Opening hour');
     error.name = 'ValidationError';
     next(error);
