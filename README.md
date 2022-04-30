@@ -45,7 +45,7 @@ The, to run the project, run
 
     docker-compose up
 
-:heavy_check_mark: Done, now you'll be able to use the API using the Swagger UI at [http://localhost:3000/doc](http://localhost:3000/doc).
+:heavy_check_mark: Done, now you'll be able to use the API using the Swagger UI at [http://localhost:3000](http://localhost:3000/).
 
 ## Testing
 

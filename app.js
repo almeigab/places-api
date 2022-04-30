@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 3000;
 
-app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use('/places', placesRoutes);
 
