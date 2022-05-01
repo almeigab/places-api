@@ -5,9 +5,14 @@ services:
             - mongo
         container_name: node-app
         restart: always
-        build: .
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
         ports:
             - ${PORT}:${PORT}
+        volumes:
+            - ./:/usr/src/app
+            - /usr/src/app/node_modules
         links:
             - mongo
     mongo:
