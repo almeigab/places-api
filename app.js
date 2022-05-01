@@ -18,9 +18,9 @@ app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 3000;
 
-app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerFile));
-
 app.use('/places', placesRoutes);
+
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.listen(PORT, (error) => {
   if (!error) {
